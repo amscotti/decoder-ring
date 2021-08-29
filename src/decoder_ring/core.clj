@@ -20,7 +20,7 @@
   (let [parsed-args (s/conform ::args args)]
     (if (= ::s/invalid parsed-args)
       (do (println "Invalid Command Line Arguments")
-          (s/explain ::args args))
+          (println (s/explain-str ::args args)))
       (let [{instructions :instructions starting-letter :starting-letter} (defaults parsed-args)]
         (->> instructions
              (ring/create-instruction-seq)
